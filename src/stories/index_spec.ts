@@ -44,7 +44,7 @@ describe('stories', () => {
     ).toPromise();
   })
 
-  it('works', async () => {
+  it('creates regular stories.ts', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
     appTree = await runner
       .runSchematicAsync('stories', {
@@ -57,5 +57,20 @@ describe('stories', () => {
     const contents = appTree.read(storyFile)?.toString();
     expect(contents).toContain('title: "Design System/My Custom Component"');
     expect(contents).toContain('component: MyCustomComponent');
+  });
+
+  it('creates stories.mdx', async () => {
+    const runner = new SchematicTestRunner('schematics', collectionPath);
+    appTree = await runner
+      .runSchematicAsync('stories', {
+        name: 'apps/src/app/components/my-custom-component',
+        title: 'Design System/My Custom Component',
+        mdx: true
+      }, appTree)
+      .toPromise();
+    const storyFile = '/apps/src/app/components/my-custom-component/my-custom-component.stories.mdx';
+    expect(appTree.files).toContain(storyFile);
+    const contents = appTree.read(storyFile)?.toString();
+    expect(contents).toContain('title="Design System/My Custom Component"');
   });
 });
