@@ -1,0 +1,10 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "stories": {
+      "description": "A schematic for adding Storybook stories to existing components.",
+      "factory": "./stories/index#stories",
+      "schema": "./stories/schema.json"
+    }
+  }
+}

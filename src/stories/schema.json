@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "StoriesSchematics",
+    "title": "Stories options schema",
+    "type": "object",
+    "description": "",
+    "properties": {
+        "name": {
+            "type": "string",
+            "format": "path",
+            "description": "",
+            "$default": {
+                "$source": "argv",
+                "index": 0
+            },
+            "x-prompt": "Enter the path to the component for which you want to generate a .stories file"
+        },
+        "title": {
+            "type": "string",
+            "description": "",
+            "$default": {
+                "$source": "argv",
+                "index": 1
+            },
+            "x-prompt": "Enter title for the story e.g. 'Design System/Core/Button'"
+        },
+        "mdx": {
+            "type": "boolean",
+            "description": "Generate document-style .mdx story",
+            "default": false,
+            "x-prompt": "Create a .mdx story?"
+        }
+    },
+    "required": [
+        "name",
+        "title"
+    ]
+}
