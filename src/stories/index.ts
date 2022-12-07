@@ -16,7 +16,7 @@ export function stories(_options: any): Rule {
     } = getComponentArgs(tree, { name: _options.name });
 
     const componentPath = parseName(defaultProjectPath, fullComponentPath);
-    const templates = url(_options.mdx ? './files_mdx' : './files');
+    const templates = url(_options.mdx ? './files/mdx' : './files/component');
     
     const parametrizedTemplates = apply(templates, [
       template({
